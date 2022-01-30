@@ -2,14 +2,6 @@ from ex3.available_actions import NOTHING_ACTION
 
 
 def determine_winner(player1, player2):
-    """
-    Функция определяет победителя в игре камень, ножницы, бумага
-
-    :param player1: первый игрок
-    :param player2: второй игрок
-    :return: Игрок победитель или None, если победителя не удалось определить
-    """
-
     if NOTHING_ACTION in (player1.action, player2.action):
         print('Один или несколько игроков ничего не выбрали.', repr(player1), repr(player2))
         return None

@@ -1,18 +1,21 @@
+from timeit import default_timer
 from ex2 import fetcher
 
 CALL_COUNT = 10
 
 
 def benchmark(num):
-    """
-    Совершает num прогонов переданной функции и выводит в консоль время каждого прогона и среднее время всех прогонов
-
-    :param num: число итераций
-    :return: функцию обёртку
-    """
     def wrapper(func):
-        # put your code here
-        pass
+        def ret_fun(*args, **kwargs):
+            time_stat_list = []
+            for _ in range(num):
+                start_time = default_timer()
+                func(*args, **kwargs)
+                end_time = default_timer()
+                print(end_time - start_time)
+                time_stat_list.append(end_time - start_time)
+            print(sum(time_stat_list) / num)
+        return ret_fun
     return wrapper
 
 
